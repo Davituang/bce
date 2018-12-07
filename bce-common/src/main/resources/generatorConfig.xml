@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--targetRuntime="MyBatis3" 目标环境
+       MyBatis3：豪华版，复杂多条件查询
+       MyBatis3Simple：helloWorld -->
+    <context id="tables" targetRuntime="MyBatis3" defaultModelType="flat">
+        <commentGenerator>
+            <!-- 是否去除自动生成的注释 true:是;false:否 -->
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://cd-cdb-k1egd7kc.sql.tencentcdb.com:63661/jsh_erp" userId="root"
+                        password="zimo1988">
+        </jdbcConnection>
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL
+           和 NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- targetProject:生成Entity类的路径 -->
+        <javaModelGenerator targetProject="src/main/java"
+                            targetPackage="com.heiyo.bce.model">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+            <!-- 从数据库返回的值被清理前后的空格 -->
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- targetProject:XxxMapper.xml映射文件生成的路径 -->
+        <sqlMapGenerator targetProject="src/main/java"
+                         targetPackage="com.heiyo.bce.mapper">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- targetPackage：Mapper接口生成的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetProject="src/main/java" targetPackage="com.heiyo.bce.mapper">
+            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+
+        <!-- 数据库表名字和我们的entity类对应的映射指定 -->
+        <table tableName="databasechangelog" domainObjectName="Databasechangelog" />
+        <table tableName="databasechangeloglock" domainObjectName="Databasechangeloglock" />
+        <table tableName="jsh_account" domainObjectName="Account" />
+        <table tableName="jsh_accounthead" domainObjectName="Accounthead" />
+        <table tableName="jsh_accountitem" domainObjectName="Accountitem" />
+        <table tableName="jsh_app" domainObjectName="App" />
+        <table tableName="jsh_asset" domainObjectName="Asset" />
+        <table tableName="jsh_assetcategory" domainObjectName="Assetcategory" />
+        <table tableName="jsh_assetname" domainObjectName="Assetname" />
+        <table tableName="jsh_depot" domainObjectName="Depot" />
+        <table tableName="jsh_depothead" domainObjectName="Depothead" />
+        <table tableName="jsh_depotitem" domainObjectName="Depotitem" />
+        <table tableName="jsh_functions" domainObjectName="Functions" />
+        <table tableName="jsh_inoutitem" domainObjectName="Inoutitem" />
+        <table tableName="jsh_log" domainObjectName="Log" />
+        <table tableName="jsh_material" domainObjectName="Material" />
+        <table tableName="jsh_materialcategory" domainObjectName="Materialcategory" />
+        <table tableName="jsh_materialproperty" domainObjectName="Materialproperty" />
+        <table tableName="jsh_person" domainObjectName="Person" />
+        <table tableName="jsh_role" domainObjectName="Role" />
+        <table tableName="jsh_supplier" domainObjectName="Supplier" />
+        <table tableName="jsh_systemconfig" domainObjectName="Systemconfig" />
+        <table tableName="jsh_unit" domainObjectName="Unit" />
+        <table tableName="jsh_user" domainObjectName="User" />
+        <table tableName="jsh_userbusiness" domainObjectName="Userbusiness" />
+    </context>
+</generatorConfiguration>
